@@ -1,0 +1,77 @@
+
+if ($data['pseudo']===$verif['pseudo']){
+  /* echo "verif pseudo<br>\$verif <br>";
+  var_dump($verif);
+  echo "<br>\$data <br>";
+  var_dump($data); */
+  ?><h3>Accès au site Mapage réservé !</h3><br><br>
+  <p>pseudo déja utilisé</p>
+
+  <a href="acceuil.php">retour vers le formulaire pour s'inscrire</a><br />
+  
+  <?php
+}
+
+else if ($data['email']===$verif['email']){
+ /*  echo "verif mail<br>\$verif <br>";
+  var_dump($verif);
+  echo "<br>\$data <br>";
+  var_dump($data); */
+  
+  ?><h3>Accès au site Mapage réservé !</h3><br><br>
+  <p>e.Mail déja utilisé</p>
+
+  <a href="acceuil.php">retour vers le formulaire pour s'inscrire</a><br />
+  
+  <?php
+}
+//et que le nom et mdp sont dans le tableau contact
+else {
+  $inscription = inscription($connexion, $nom,$prenom,$mdp,$email,$pseudo);
+  $contact = recupContact($connexion, $pseudo);
+}
+//condition à verifier ? Inscription
+if (isset($pseudo) && !empty($pseudo) && ($contact['pseudo']==$pseudo) && ($contact['mdp']==$mdp)) {
+  echo "inscription<br>\$verif <br>";
+  var_dump($verif);
+  echo "<br>\$data <br>";
+  var_dump($data['pseudo']);
+
+  $_SESSION['pseudo']=$pseudo;
+  $_SESSION['mdp']=$mdp;
+  $_SESSION['email']=$email;
+  $_SESSION['prenom']=$prenom;
+  $_SESSION['nom']=$nom;
+
+
+
+  echo  'Bienvenu  '.$_SESSION['prenom']." alias ".$_SESSION['pseudo'].'<br/>';
+
+?>
+  <h3>Accès au site mapage !</h3>
+  <br><br>
+  <p>
+        <a href="espaceMembre.php">Inscription réussi - lien vers espace Membre</a><br />
+        <a href="acceuil.php">Lien vers  le formulaire</a><br />
+        </p>
+ <?php 
+}
+
+
+else {
+  echo "PB<br>\$verif <br>";
+  var_dump($verif);
+  echo "<br>\$data <br>";
+  var_dump($data);
+  ?><h3>Accès au site mapage réservé !</h3><br><br>
+  <p>erreur d'inscription logarithmique, enfin du dev :-) </p>
+
+  <a href="acceuil.php">retour vers le formulaire pour s'inscrire</a><br />
+  
+  <?php
+
+}
+
+?>
+</body>
+</html>

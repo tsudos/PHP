@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+    <title>Formulaire pour créer des Membres</title>
+
+    <style type="text/css">
+        body{
+                background-color: #444444;
+                color : white;
+                font-size:20px;
+            }
+
+        .btn {
+            text-decoration: none;
+            padding: 9px;
+            font-family: tahoma;
+            font-size: 0.5em;
+            color: #0c0c0c;
+            background-color: #d8d8d8;
+            border-radius: 11px;
+            -webkit-border-radius: 11px;
+            -moz-border-radius: 11px;
+            border: 3px groove #a5a5a5;
+            box-shadow: 3px 3px 12px #95b3d7;
+            -webkit-box-shadow: 3px 3px 12px #95b3d7;
+            -moz-box-shadow: 3px 3px 12px #95b3d7;
+        }
+
+
+        .btn:hover {
+            padding: 10px;
+            font-size: 0.6em;
+            background-color: #548dd4;
+            border: 3px solid #0f243e;
+            box-shadow: -3px -3px 12px #95b3d7;
+            -webkit-box-shadow: -3px -3px 12px #95b3d7;
+            -moz-box-shadow: -3px -3px 12px #95b3d7;
+        }
+
+    </style>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<h1><script type="text/javascript">d=new Date(); document.write("Aujourd'hui nous sommes le : <span style='color:#a5a5a5;'>");   document.write(d.toLocaleDateString());   document.write("</span>"); </script>  </h1>
+<form name="Membre" method="POST" action="villeDept.php">
+        <fieldset>
+            <legend>information de membre</legend>
+    
+                <p>
+                        <label>Ville 1 : </label><input type="text" name="ville1"  required   />
+                </p>   
+                <p>
+                        <label>Departement de la ville 1 : </label><input type="text" name="deptVille1"  required/>
+                </p>   
+                <p>
+                        <label>Ville 2 : </label><input type="text" name="ville2"  required />
+                </p>   
+                <p>
+                        <label>Departement de la ville 2 : </label><input type="text" name="deptVille2" required />
+                </p>            
+                <p>
+                    <input type="submit" name="envoyer" value="envoyer" class="btn"/>
+                </P>        
+        </fieldset>
+    
+    </form>
+
+
+
+</body>
+</html>

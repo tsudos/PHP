@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<title>Election</title>
+
+<style type="text/css">
+body{
+    background-color: blue;
+    color:whitesmoke;
+    font-size: 30px;
+}
+
+label{
+    font-size: 20px;
+}
+
+</style>
+<meta charset="UTF-8"/>
+</head>
+<body>
+<form name="FIMG" method="POST" action="IMG.php">
+        <caption>Affichage d'image</caption>
+    <fieldset>
+            <p>
+            <label for="nbI">Choisir le nombre d'image(s) à afficher : </label>
+
+            <select name="nbI" id="nbI">
+                <script type="text/javascript">
+                for(var i = 0; i <=24 ;  i++)
+                document.writeln("<option value="+i+">"+i+"</option>");
+                </script>
+            </select>
+            </p>
+            <p>
+                <input type="submit" name="envoyer" value="envoyer"/>
+            </P> 
+    </fieldset>
+
+
+</form>
+
+
+
+</body>
+</html>

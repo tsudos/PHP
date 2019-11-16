@@ -1,0 +1,17 @@
+body {
+  text-align: center;
+  font-family: 'Oswald', sans-serif;
+}
+
+h1 {
+  margin-bottom: 10vh;
+  font-family: 'Oswald', sans-serif;
+}
+
+.formulaire {
+  font-family: 'Oswald', sans-serif;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 50%;
+}

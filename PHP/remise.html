@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+<title>Remise</title>
+
+<meta charset="UTF-8"/>
+<style type="text/css">
+
+body{
+    background-color: cadetblue;
+    margin-left: 0;
+}
+
+div {
+    width:auto;
+    text-align: center;
+    padding: 10%;
+}
+
+h1{
+    border: 2px ridge rgba(163, 163, 163, 0.747);
+}
+
+
+form {
+    text-align: center;
+}
+
+
+</style>
+
+
+</head>
+
+<body>
+
+    <div >
+    <h1>Remise</h1>
+
+<!--metohd post plus securiser que GET-->   
+<form name="Fremise" method="POST" action="remise.php">
+    <fieldset>
+        <legend>Informations</legend>
+            
+           <!-- Datalist ecrit à notre place et ne nous permet pas de modification sans effacer à la main 
+               <p>
+                <label for="Categorie">choisir le type d'article :</label>
+                <input list="Categorie" id="Categ" name="Categ" />
+                    <datalist id="Categorie">
+                        <option value="PC">
+                        <option value="CD">
+                        <option value="DVD">
+                        <option value="Livres">
+                        <option value="Autres">
+                    </datalist>
+            </p>-->
+
+            <p>
+                <label for="Type">choisir un produit </label>
+
+                <select id="Type" name="type">
+                    <option value="PC">PC</option>
+                    <option value="CD">CD</option>
+                    <option value="DVD">DVD</option>
+                    <option value="Livres">Livres</option>
+                    <option value="Autres">Autres</option>
+                </select>
+            </p>
+            
+            <p>
+                <label>Prix de l'article : </label><input type="text" name="prix" placeholder="rentrer le prix de l'article !"/>
+            </p>
+            
+
+            <p>
+                <input type="submit" name="envoyer" value="envoyer"/>
+            </P>
+
+
+    </fieldset>
+</form>
+
+
+</div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+

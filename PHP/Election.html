@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+<title>Election</title>
+
+<style type="text/css">
+body{
+    background-color: black;
+    color:whitesmoke;
+    font-size: 30px;
+}
+
+</style>
+<meta charset="UTF-8"/>
+</head>
+<body>
+    <h1>remplissage des scores des participants</h1>
+
+<!--metohd post plus securiser que GET-->   
+<form name="Fscore" method="POST" action="election.php">
+    <fieldset>
+        <legend>Score</legend>
+
+            <p>
+                    <label>Merlin : </label><input type="text" name="A" placeholder="Score de Merlin"/>
+            </p>
+            <p>
+                    <label>Dumbeldore : </label><input type="text" name="B" placeholder="Score de Dumbledore"/>
+            </p>
+            <p>
+                    <label>Gandalf : </label><input type="text" name="C" placeholder="Score de Gandalf"/>
+            </p>
+            <p>
+                <label>Docteur Strange : </label><input type="text" name="D" placeholder="Score du Docteur Strange"/>
+            </p>
+        
+            <p>
+                <input type="submit" name="envoyer" value="envoyer"/>
+            </P>        
+    </fieldset>
+
+
+
+
+
+</form>
+</body>
+</html>

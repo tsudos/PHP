@@ -1,0 +1,43 @@
+<?php
+    require_once('fn.database.php');
+
+    $id_get=$_GET['billet'];
+    $connexion = getPDO();
+
+    //recup billet choisi
+ 
+    $billet = recupBillet($connexion);
+
+    while ($data1 = $billet->fetch())
+    {
+        if ($id_get==$data1['id_billet']){
+    ?>
+        <div class="news">
+        <h3><?php echo  $data1['titre']." ".$data1['date_creation']." ".$data1['auteur']."<br>";?></h3>
+
+        <p><?php echo $data1['contenu']."<br>"?></p>
+        </div>
+
+<?php
+     
+    }
+}
+
+    //recup commentaire associé
+    $result = recupCom($connexion);
+
+    echo "<h2>Commentaires</h2><br><br>";
+
+    
+
+    while ($data = $result->fetch())
+    {
+        echo $data['auteur']." : ".$data['date_commentaire']."<br>".$data['commentaire']."<br><br>";
+
+    }
+    
+
+    /*
+    else {echo "pas de commentaire !";}
+*/
+?>
