@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>atelierA-2 : Machine &agrave; sous - SYNCHRONE</title>
+  <link rel="stylesheet" type="text/css" href="style.css" />  
+  <script language="javascript" type="text/javascript">
+  /*-----------------------------MOTEUR AJAX-----------------------------*/
+   function jouer() {   
+	 /*-----------------------------Config et envoi de la requete SYNCHRONE : */
+	 objetXHR = new XMLHttpRequest();//création d'une requete uniquement pour FireFox
+     objetXHR.open("get","gainMax.txt", false); //Config. requete GET et Synchrone
+     objetXHR.send(null);//envoi de la requete
+	 /*-----------------------------------------Attente du retour SYNCHRONE : */
+	 var nouveauGain = objetXHR.responseText;//recup du résulat renvoyé par le serveur
+     document.getElementById("resultat").innerHTML=nouveauGain;//affecte la zone résultat
+	 document.getElementById("info").style.visibility="visible";
+  }
+  /*--------------------------FIN DU MOTEUR AJAX--------------------------*/
+  </script>
+ </head>
+ <body>
+ <img src="../commun/logo.jpg" width="600" height="100">
+ <h2> Atelier8-2 </h2>
+ <div id="page">
+   <!--zone du résultat-->
+   <div id="info">Bravo, vous avez gagné <span id="resultat">0</span> Euros</div>
+   <!--zone du formulaire-->
+   <div id="formulaire">
+   <form>      
+      <input name="button" type="button" onClick="jouer();" value="JOUER" />
+   </form>
+   </div>
+ </div>
+ <!--commentaires sur l'atelier-->
+ <div id="commentaire">
+ 	<ul>
+		<li>Communication SYNCHRONE vers un simple fichier TXT</li>
+		
+	    <li>Avec une feuille de style</li>
+ 	</ul>
+ </div>
+</body>
+</html>

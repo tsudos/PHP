@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>atelierA-1 : Machine &agrave; sous - SYNCHRONE</title> 
+  <style type='text/css'>
+  #monbloc {
+	  
+	  width : 400px;
+	  margin :0 auto;
+	  
+  }
+  
+  #maDiv {
+	  
+	   display : none;
+	  
+  }
+  
+  
+  </style> 
+  <script language="javascript" type="text/javascript">
+  /*-----------------------------MOTEUR AJAX-----------------------------*/
+   function jouer() {   
+	 /*-----------------------------Config et envoi de la requete SYNCHRONE : */
+	 var maDiv = document.getElementById("maDiv");
+	 maDiv.style.display ="block";
+	 maDiv.style.color ="red";
+	 objetXHR = new XMLHttpRequest();//création d'une requete uniquement pour FireFox
+     objetXHR.open("get","gainMax.txt", false); //Config. requete GET et Synchrone : 
+	 // p1 : méthode de requete ; p2 :le fichier ciblé par la requête est gainMax.txt p3 : false mode synchrone
+	 
+     objetXHR.send(null);//envoi de la requete  : null pour la méthode get , des valeurs autres pour la méthode post.
+	 /*-----------------------------------------Attente du retour SYNCHRONE : */
+	 var nouveauGain = objetXHR.responseText;//recup du rsulat renvoy par le serveur
+     document.getElementById("resultat").innerHTML=nouveauGain;;//affecte le nouveau gain  la zone résultat
+  }
+  /*--------------------------FIN DU MOTEUR AJAX--------------------------*/
+  </script>
+ </head>
+ <body>
+ <div id="monbloc">
+ <img src="../commun/logo.jpg" width="600" height="100">
+ <h2> AtelierA-1 </h2>
+ <div>
+   <!--zone du rsultat-->
+   <div id="maDiv">Bravo, vous avez gagné <span id="resultat">0</span> Euros</div>
+   <!--zone du formulaire-->
+   <div>
+   <form>      
+      <input name="button" type="button" onClick="jouer();" value="JOUER" />
+   </form>
+   </div>
+ </div>
+ <!--commentaires sur l'atelier-->
+ 
+</div> 
+</body>
+</html>

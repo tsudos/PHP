@@ -1,0 +1,72 @@
+<!DOCTYPE html >
+<html >
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>atelierB-4 : Machine &agrave; sous - ASYNCHRONE</title>
+  <link rel="stylesheet" type="text/css" href="style.css" />  
+  <script language="javascript" type="text/javascript">
+  /*-----------------------------MOTEUR AJAX-----------------------------*/
+  function jouer() {   
+	 /*-----------------------------Config et envoi de la requete ASYNCHRONE : */
+	 objetXHR = new XMLHttpRequest();//création d'une requete uniquement pour FireFox
+     objetXHR.open("get","gainAleatoire.php", true); //Config. requete GET et ASynchrone
+	 objetXHR.onreadystatechange = actualiserPage;//dsignation de la fonction de rappel
+	 //gestion du bouton et du chargeur
+	 document.getElementById("button").disabled= true;
+	 document.getElementById("charge").style.visibility="visible";
+     objetXHR.send(null);//envoi de la requete
+	 /*---------------------------------------- */
+  }
+  function actualiserPage() {
+	if (objetXHR.readyState == 4) {//test si le rsultat est disponible
+	 if (objetXHR.status == 200) {
+       var nouveauGain = objetXHR.responseText;//recup du rsulat renvoy par le serveur
+   		document.getElementById("resultat").innerHTML=nouveauGain;//affecte la zone rsultat
+		document.getElementById("info").style.visibility="visible";//affiche le rsultat
+	   //gestion du bouton et du chargeur
+	   document.getElementById("button").disabled= false;
+	   document.getElementById("charge").style.visibility="hidden";
+	 }else{
+	   //message d'erreur serveur
+	   document.getElementById("info").innerHTML="Erreur serveur : "+objetXHR.status+"  "+ objetXHR.statusText;
+	   document.getElementById("info").style.visibility="visible";
+	   //gestion du bouton et du chargeur
+	   document.getElementById("button").disabled= false;
+	   document.getElementById("charge").style.visibility="hidden";
+	   //annule la requete en cours
+	   objetXHR.abort();
+	   objetXHR=null;
+	   }
+	 }
+  }
+  /*--------------------------FIN DU MOTEUR AJAX--------------------------*/
+  </script>
+</head>
+ <body>
+ <img src="../commun/logo.jpg" width="600" height="100">
+ <h2> AtelierB-4 </h2>
+ <div id="page">
+   <!--zone du rsultat-->
+   <div id="info">Bravo, vous avez gagné <span id="resultat">0</span> Euros</div>
+   <!--zone du chargeur-->
+   <img id="charge" src="chargeur.gif"  />
+   <!--zone du formulaire-->
+   <div id="formulaire">
+   <form> 
+      <label> Nom :  </label><input type='text' name = 'nom'  />
+      <input name="button" id="button" type="button" onClick="jouer();" value="JOUER" />
+   </form>
+   </div>
+ </div>
+ <!--commentaires sur l'atelier-->
+ <div id="commentaire">
+ 	<ul>
+		<li>Communication <strong>A</strong>SYNCHRONE vers un  fichier PHP (valeur de gain al&eacute;atoire)</li>
+		
+      <li>Avec une feuille de style</li>
+ 	    <li>Avec contr&ocirc;le de readyState et de status</li>
+ 	    <li><strong>Avec gestion du chargeur et blocage du bouton</strong></li>
+ 	</ul>
+ </div>
+</body>
+</html>

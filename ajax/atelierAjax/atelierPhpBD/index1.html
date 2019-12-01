@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Machine à sous</title>
+        <link rel="stylesheet" type="text/css" href="../style/style.css" />  
+        <script language="javascript" type="text/javascript">
+
+
+        function Ajouter_base(){
+            
+            var xhr =  new XMLHttpRequest();
+            //var nom = document.getElementById('nom').value;
+            var nom =document.contact.nom.value;
+            var prenom = document.getElementById('prenom').value;
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && (xhr.status == 200)) {
+                document.getElementById('contact').innerHTML = xhr.responseText; // Données textuelles récupérées
+                }
+            };
+
+            xhr.open("POST", "inserer.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//(propriete, valeur)
+            xhr.send("nom="+nom+"&prenom="+prenom);
+        }
+        
+
+
+        </script>
+    </head>
+    <body onload="Ajouter_base();">
+        <img src="../gif/dragon.gif" width="600" height="400"   >
+        <h2> Atelier php/BD/AJAX</h2>
+        <form name="contact" action="" method="POST">
+            <!--bien mettre un id pour recupere en ajax-->
+            <p>Votre prénom :<br /><input type="text" name="prenom" value="" id="prenom"/>
+            </p>
+            <p>Votre nom :<br /><input type="text" name="nom" value="" id="nom" />
+            </p>
+            <input name="button" id="button" type="button" onClick="Ajouter_base();" value="envoyer" />
+        </form>
+        </div>
+        </div>
+        <div id="contact"></div>
+
+    </body>
+</html>

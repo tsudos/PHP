@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Machine à sous</title>
+    <link rel="stylesheet" type="text/css" href="../style/style.css" />  
+    <script language="javascript" type="text/javascript">
+
+
+
+    function jouer() {   
+	 /*déclenchement du moteur Ajax */
+        objetXHR = new XMLHttpRequest();//Config de
+        objetXHR.open("post","../php/gainAleatoire.php", true);// la requete ASYNCHRONE
+        objetXHR.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");//post  
+	    objetXHR.onreadystatechange = function() {
+            if (objetXHR.readyState == 4) {//test si le résultat est disponible
+                if (objetXHR.status == 200) {
+                var nouveauGain = objetXHR.responseText;//recup du résulat renvoyé par le serveur
+                document.getElementById("resultat").innerHTML=nouveauGain;//affecte la zone résultat
+                document.getElementById("info").style.visibility="visible";
+                }
+                else{
+                    //message d'erreur
+                    document.getElementById("info").innerHTML="Erreur serveur : "+objetXHR.status+" – "+ objetXHR.statusText;
+                    document.getElementById("info").style.visibility="visible";
+                    //annule la requete en cours
+                    objetXHR.abort();
+                    objetXHR=null;
+                    }
+            }
+        }//désignation de la fonction de rappel
+        objetXHR.send(null);//envoi de la requete
+
+    }
+  
+    
+    </script>
+    </head>
+    <body>
+        <img src="../image/logo.jpg" width="600" height="100">
+        <h1> Atelier 2-5 / php asynchrone     </h1>
+
+        <div id="page">
+            
+        <div id="info">Bravo, vous avez gagné <span id="resultat"></span> Euros aux machines à sous !!</div>
+
+            <div class="formulaire">
+                
+                <form>      
+                    <label>Nom : </label><input type="text" name='nom'/>  
+                            <input name="button" type="button" onClick="jouer();" value="JOUER" />
+                </form>     
+            </div>
+        </div>
+
+    </body>
+</html>

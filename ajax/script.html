@@ -1,0 +1,57 @@
+    <!DoCtype html>
+    <html>
+    <head>
+        <meta http-equiv="content-type" content="text/html"/>
+        <title>ajax/alert</title>
+        <script type="text/javascript">
+    //verifiaction si XMLHttpRequest marche
+        function TestXHR(){
+            if(XMLHttpRequest){ //ou (window.XMLHttpRequest)
+                 alert ("OK objet natif XMLHttpRequest")   
+            }
+            else if(ActiveXObject){// ou (window.ActiveXObject)
+                 alert ("ActiveXObject pas utiliser")   
+            }
+            else {
+                alert("votre navigateur ne supporte pas XMLHttpRequest")
+            }
+        }
+
+    //verification si XMLHttpRequest marche(status 200) puis récuperation du contenu du fichier text
+        function TestXHR2(){
+            var maDiv = document.getElementById('maDiv');
+            if(XMLHttpRequest){
+                var xhr = new XMLHttpRequest();}
+
+            else alert ("XMLHttpRequest pas supporter");
+
+            xhr.open("GET", "monfichier.txt", true);
+            xhr.send(null);
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status== 200) {
+                    alert (xhr.responseText);
+                    //recuperation par le resultat
+                    maDiv.innerHTML = xhr.responseText;
+                }
+            }
+        }
+
+</script>
+
+
+</head>
+<body onload="TestXHR();">
+        <h1>ajax/alert</h1>
+
+ 
+
+<div>
+<button name="test" onclick="TestXHR2();"> test </button>
+</div> 
+       
+   
+<div id="maDiv"></div>
+
+</body>
+</html>

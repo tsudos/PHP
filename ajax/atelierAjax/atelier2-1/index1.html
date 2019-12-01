@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Machine à sous</title> 
+
+  <script language="javascript" type="text/javascript">
+   function jouer() {   
+	 /*déclenchement du moteur Ajax */
+	 objetXHR = new XMLHttpRequest();//Config de
+     objetXHR.open("get","../texte/gainMax.txt", false);// la requete SYNCHRONE
+     objetXHR.send(null);//puis envoi de la requete
+     	
+	 var nouveauGain = objetXHR.responseText;//recupération du résultat du fichier.text (redonné par le serveur)
+     document.getElementById("resultat").innerHTML=nouveauGain;;//mise du nouveau gain dans le span
+  }
+  </script>
+ </head>
+ <body>
+ <img src="../image/logo.jpg" width="600" height="100">
+ <h1> Atelier 2-1 </h1>
+ <div>
+  
+    <!--une div avec un span vide qui recevra la valeur du fichier txt-->
+   <div>Super, vous avez gagné <span id="resultat"></span> Euros aux machines à sous !!</div>
+
+   <div>
+   <form>
+       <!--bouton fesant appel à la fonction gain-->     
+      <input name="button" type="button" onClick="jouer();" value="Gain" />
+   </form>
+   </div>
+ </div>
+
+</body>
+</html>

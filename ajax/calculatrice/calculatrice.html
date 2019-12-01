@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>calculatrice</title>
+<script type="text/Javascript">
+function TestXHR_PHP(val1, val2){
+    var xhr = new XMLHttpRequest();
+    var res = document.getElementById('res');
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status== 200) {
+         
+            res.value = xhr.responseText;
+        }
+    }
+
+
+    xhr.open("POST", "calculatrice.php", true);
+    xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+    xhr.send("val1="+nb1+"&val2="+nb2);
+
+    
+    }
+</script>
+</head>
+
+
+<body>
+    <h3> calcul </h3>
+
+    <form name="FTableR" action="" method="">
+        <div>
+            <input type="text" value="0" name="val1" id="val1" size="10" oninput="TestXHR_PHP(val1.value,val1.value)"/>*
+            <input type="text" value="0" name="val2" id="val2" size="10" oninput="TestXHR_PHP(val1.value,val1.value)"/>=
+            <input type="text" value="" name="res" id="res" size="10"/>
+            <input type="button" name="recup" value="envoyer" onclick="TestXHR_PHP(nb1.value, nb2.value)" />
+        </div>
+    </form>
+
+</body>
+
+</html>

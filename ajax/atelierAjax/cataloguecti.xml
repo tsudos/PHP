@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- New XML document created with EditiX XML Editor (http://www.editix.com) at Wed Nov 13 16:11:03 CET 2019 -->
+
+
+<catalogue>
+	<formation>
+HTML5-CSS3</formation>
+	<formation>ALGO-JAVASCRIPT
+</formation>
+	<formation>JOOMLA
+</formation>
+	<formation>
+PHP-INITIATION</formation>
+	<formation>PHP-MYSQL
+</formation>
+	<formation>JAVASCRIPT
+</formation>
+	<formation>
+PHP-PERFECTIONNEMENT</formation>
+	<formation>WORDPRESS
+</formation>
+	<formation>
+XML-AJAX</formation>
+</catalogue>

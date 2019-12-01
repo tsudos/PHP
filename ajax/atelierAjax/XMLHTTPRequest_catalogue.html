@@ -1,0 +1,43 @@
+<!DoCtype html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html"/>
+    <title>ajax/atelier</title>
+    <script type="text/javascript">
+        function processResponse(){
+            if(xhr.readyState == 4){
+                var nodes = xhr.responseXML.documentElement.childNodes;
+                var membersList = document.getElementById("formationcti");{
+                alert (membersList);
+                for (var i = 0; i < nodes.length; i++){
+                    var name = nodes[i].chilNodes[0].nodeValue;
+                    var li = document.createElement("li");
+                li.appendChild(document.createTextNode(name));
+                membersList.appendChild(li);               
+             }
+            }
+        }
+    }
+    function loadFormations() {
+        xhr = window.ActiveXObject
+            ? new ActiveXObject("Msxm12.XMLHTTP")
+            : new XMLHttpRequest();
+        xhr.onreadystatechange = processResponse;
+        xhr.open("GET", "cataloguecti.xml", true);
+        xhr.send("");
+    }
+
+        </script>
+    </head>
+    <body>
+        <p>
+            <button onclick="loadFormations()">Charger formation CTI-Formation</button>
+        </p>
+
+        <ul id="formationcti"></ul>
+        <p><img src="logo.jpg"></p>
+
+
+
+    </body>
+    </html>
