@@ -60,7 +60,7 @@ function recupContact(PDO $pdo, $nom){
 
 function ajoutArticle(PDO $pdo,$nom,$contenu,$idCat,$idRed){
     
-    $req = $connexion->prepare('INSERT INTO articles (titre, contenu, id_categorie,date_redaction,id_redacteur) VALUES (?,?,?,?,?)');
+    $req = $pdo->prepare('INSERT INTO articles (titre, contenu, id_categorie,date_redaction,id_redacteur) VALUES (?,?,?,?,?)');
     $req->execute(array($nom,$contenu,$idCat,'CURRENT_TIME',$idRed));
 
     echo "Article ajouté!";
@@ -82,7 +82,7 @@ function compMail(PDO $pdo,$email){
 }
 
 
-function compMdp(PDO $pdo,$nom){
+function compMdp(PDO $pdo,$nom, $prenom){
     $req = $pdo->prepare("SELECT utilisateurs.nom, utilisateur.prenom FROM utilisateurs Where utilisateurs.nom=? AND utilisateurs.prenom=?");
     $req->execute(array($nom,$prenom));
     $row = $req->fetch();
